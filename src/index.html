@@ -9,6 +9,32 @@
     <title>Gritbook</title>
 </head>
 <body>
-    <h1>Gritbook</h1>
+    <main>
+        <div id= "header-data">
+            <h2 id="user">Name</h2>
+            <h1>Gritbook</h1>
+            <button type="submit" class="buttons" id="logout-btn">Logout</button>
+        </div>
+        <form id="login-form">
+            <input type="text" placeholder="Username" id="username" required/>
+            <input type="password" placeholder="Password" id="password" required/>
+            <button type="submit" class="buttons" id="login-btn">Login</button>
+          </form>
+          <form id="message-form">
+            <input type="text" placeholder="Enter message" id="message" required />
+            <button type="submit" class="buttons" id="add-message-btn">
+              Enter
+            </button>
+          </form>
+          <div class="topics" id="topic1-div">
+              <h2>Topic 1</h2>
+          </div>
+          <div class="topics" id="topic2-div">
+            <h2>Topic 2</h2>
+          </div>
+          <div class="topics" id="topic3-div">
+            <h2>Topic 3</h2>
+          </div>
+    </main>
 </body>
 </html>
