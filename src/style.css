@@ -1,94 +1,166 @@
+/* global settings */
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-} 
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
 
 body {
-    padding: 1rem;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#header-data {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin: 1rem;
+  background-color: #fff9f0;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
 }
 
+h1,
+h2,
+.buttons,
+.copyright {
+  font-family: "Inknut Antiqua", "Trebuchet MS", "Lucida Sans Unicode",
+    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+h1 {
+  color: #b59136;
+  font-size: 2.75rem;
+  letter-spacing: 1;
+  margin: 1rem;
+}
+
+h2 {
+  color: #005b4c;
+  font-size: 1.8rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* Header */
+#header-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#user {
+  margin: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Forms */
 form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    margin: 1rem;
-    box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
 }
 
+#message-form {
+  margin: 1.5rem;
+}
+
+/* Inputs */
 input {
-    height: 2rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1.5rem;
-    margin: 1.5rem;
-    transition-duration: 0.3s;
-    box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: #b59136 2px solid;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem;
+  transition-duration: 0.3s;
+  box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
 }
 
-#username, #password {
-    width: 15rem;
+#username,
+#password {
+  width: 15rem;
 }
 
 #message {
-    width: 40rem;
+  width: 40rem;
 }
 
+/* Buttons */
 .buttons {
-    font-size: 1.06rem;
-    font-weight: bold;
-    width: 6rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin: 1rem;
-    transition-duration: 0.3s;
-    box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+  background-color: #b59136;
+  color: #fff;
+  font-size: 1.06rem;
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem;
+  transition-duration: 0.3s;
+  box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
 }
 
 .buttons:hover {
-    background-color: lightgray;
+  background-color: #604200;
 }
 
+/* Discussions divs */
 .topics {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    min-height: 30rem;
-    border-radius: 0.5rem;
-    margin: 1rem;
-    padding: 2rem;
-    box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 80%;
+  min-height: 30rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #b59136;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+  width: 100%;
+  height: 4.2rem;
+  box-shadow: 4px 0 8px rgb(74 68 83 / 70%);
+}
+
+.copyright {
+  padding: 0.5rem;
+  color: #fff;
+}
+
+#chevron a {
+  color: #fff;
+  font-size: 2.3rem;
+}
+
+#chevron a:hover {
+  text-shadow: 2px 3px 5px rgb(74 68 83 / 70%);
 }

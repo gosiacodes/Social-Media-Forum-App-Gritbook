@@ -1,45 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/3318035e44.js"></script>
     <script type="module" src="main.ts"></script>
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="img/conversation_16.png"
+      type="image/png"
+      sizes="16x16"
+    />
     <title>Gritbook</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <div id= "header-data">
-            <h2 id="user">Name</h2>
-            <h1>Gritbook</h1>
-            <button type="submit" class="buttons" id="logout-btn">Logout</button>
+      <!-- Header -->
+      <div id="header-data">
+        <h2 id="user">Name</h2>
+        <div class="logo">
+          <h1>Gritbook</h1>
+          <img
+            src="img/conversation_128.png"
+            alt="Gritbook logo"
+            width="96"
+            height="96"
+          />
         </div>
-        <form id="login-form">
-            <div class="row">
-                <input type="text" placeholder="Username" id="username" required/>
-                <input type="password" placeholder="Password" id="password" required/>
-            </div>
-            <div class="row">
-                <button type="submit" class="buttons" id="signup-btn">Sign Up</button>
-                <button type="submit" class="buttons" id="signin-btn">Sign In</button>
-            </div>
-          </form>
-          <form id="message-form">
-            <input type="text" placeholder="Enter message" id="message" required />
-            <button type="submit" class="buttons" id="add-message-btn">
-              Enter
-            </button>
-          </form>
-          <div class="topics" id="topic1-div">
-              <h2>Travel</h2>
-          </div>
-          <div class="topics" id="topic2-div">
-            <h2>Sport</h2>
-          </div>
-          <div class="topics" id="topic3-div">
-            <h2>Gaming</h2>
-          </div>
+        <button type="submit" class="buttons" id="logout-btn">Logout</button>
+      </div>
+      <!-- End of header -->
+      <!-- Login form -->
+      <form id="login-form">
+        <div class="row">
+          <input type="text" placeholder="Username" id="username" required />
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            required
+          />
+        </div>
+        <div class="row">
+          <button type="submit" class="buttons" id="signup-btn">Sign Up</button>
+          <button type="submit" class="buttons" id="signin-btn">Sign In</button>
+        </div>
+      </form>
+      <!-- End of login form -->
+      <!-- Message form -->
+      <form id="message-form">
+        <input type="text" placeholder="Enter message" id="message" required />
+        <button type="submit" class="buttons" id="add-message-btn">
+          Enter
+        </button>
+      </form>
+      <!-- End of message form -->
+      <!-- Disscussion divs -->
+      <div class="topics" id="travel-div">
+        <h2>Travel</h2>
+      </div>
+      <div class="topics" id="sport-div">
+        <h2>Sport</h2>
+      </div>
+      <div class="topics" id="gaming-div">
+        <h2>Gaming</h2>
+      </div>
+      <!-- End of disscussion divs -->
     </main>
-</body>
+    <!-- Footer -->
+    <footer>
+      <div class="footer">
+        <p class="copyright">Gritbook Ltd.</p>
+        <p class="copyright">
+          Copyright &copy; 2022 | Othman Abdolhalim, Arbi Arestakesians,
+          Malgorzata Pick
+        </p>
+        <span id="chevron" title="To the top">
+          <a href="#"><i class="fas fa-chevron-circle-up"></i></a>
+        </span>
+      </div>
+    </footer>
+    <!-- End footer -->
+  </body>
 </html>
