@@ -1,6 +1,7 @@
 import { onValue, ref } from "firebase/database";
 import { db } from "./modules/firebaseApp";
 import { Loginhandler } from "./modules/LoginHandler";
+import { UserFormHandler } from "./modules/UserFormHandler";
 import { showForum } from "./modules/displayHandler"
 
 // Created database and template objects
@@ -28,3 +29,5 @@ forumButtons.forEach((btn) => {
         showForum(forum);
     });
 });
+
+new UserFormHandler();

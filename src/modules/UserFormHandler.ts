@@ -1,4 +1,4 @@
-class UserFormHandler {
+export class UserFormHandler {
     private form: HTMLFormElement;
     private usernameInField: HTMLInputElement;
     private passwordInField: HTMLInputElement;
@@ -6,10 +6,10 @@ class UserFormHandler {
     
 
     constructor(){
-        this.usernameInField = document.querySelector('new_username');
-        this.passwordInField = document.querySelector('new_password');
-        this.usernameInField = document.querySelector('repeat_password');
-        this.form = document.querySelector('sign-form');;
+        this.usernameInField = document.querySelector('#new_username');
+        this.passwordInField = document.querySelector('#new_password');
+        this.repeatPasswordInField = document.querySelector('#repeat_password');
+        this.form = document.querySelector('#signup-form');;
 
         this.form.addEventListener('submit', this.validateSignForm.bind(this))
 
