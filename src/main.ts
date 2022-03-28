@@ -1,6 +1,7 @@
 import { onValue, ref } from "firebase/database";
 import { db } from "./modules/firebaseApp";
 import { Loginhandler } from "./modules/LoginHandler";
+import { UserFormHandler } from "./modules/UserFormHandler";
 
 // Created database and template objects
 const dbRefMess = ref(db, '/messages');
@@ -17,3 +18,4 @@ onValue(dbRefUsers, (snapshot) => {
 });
 
 new Loginhandler();
+new UserFormHandler();
