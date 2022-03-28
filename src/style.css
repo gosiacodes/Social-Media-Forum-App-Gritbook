@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #fff9f0;
+  background-color: #fff8ec;
 }
 
 main {
@@ -123,6 +123,51 @@ input {
   background-color: #604200;
 }
 
+/* Forums section */
+#forums-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Sidebar */
+#sidebar {
+  width: 15%;
+  margin-top: 10rem;
+}
+
+#sidebar a {
+  color: #b59136;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: block;
+}
+
+#sidebar a:hover {
+  color: #604200;
+}
+
+/* Topics section */
+#topics-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+}
+
+#travel-div {
+    display: flex;
+}
+
+#sport-div {
+    display: none;
+}
+
+#gaming-div {
+    display: none;
+}
+
 /* Discussions divs */
 .topics {
   display: flex;
@@ -135,6 +180,7 @@ input {
   margin: 1rem;
   padding: 1rem;
   box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+  border: #005b4c solid 2px;
 }
 
 /* Footer */

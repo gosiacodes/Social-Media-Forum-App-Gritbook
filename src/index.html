@@ -27,7 +27,7 @@
       <div id="header-data">
         <h2 id="user">Name</h2>
         <div class="logo">
-          <h1>Gritbook</h1>
+          <h1 id="home">Gritbook</h1>
           <img
             src="img/conversation_128.png"
             alt="Gritbook logo"
@@ -55,25 +55,51 @@
         </div>
       </form>
       <!-- End of login form -->
-      <!-- Message form -->
-      <form id="message-form">
-        <input type="text" placeholder="Enter message" id="message" required />
-        <button type="submit" class="buttons" id="add-message-btn">
-          Enter
-        </button>
-      </form>
-      <!-- End of message form -->
-      <!-- Disscussion divs -->
-      <div class="topics" id="travel-div">
-        <h2>Travel</h2>
-      </div>
-      <div class="topics" id="sport-div">
-        <h2>Sport</h2>
-      </div>
-      <div class="topics" id="gaming-div">
-        <h2>Gaming</h2>
-      </div>
-      <!-- End of disscussion divs -->
+      <!-- Forums section -->
+      <section id="forums-section">
+        <!-- Sidebar -->
+        <div id="sidebar">
+          <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="#travel-div" class="forum-btn" id="travel-forum"
+            ><i class="fa-solid fa-plane"></i> Travel</a
+          >
+          <a href="#sport-div" class="forum-btn" id="sport-forum"
+            ><i class="fa-solid fa-basketball"></i> Sport</a
+          >
+          <a href="#gaming-div" class="forum-btn" id="gaming-forum"
+            ><i class="fa-solid fa-gamepad"></i> Gaming</a
+          >
+        </div>
+        <!-- End of sidebar -->
+        <div id="topics-section">
+          <!-- Message form -->
+          <form id="message-form">
+            <input
+              type="text"
+              placeholder="Enter message"
+              id="message"
+              required
+            />
+            <button type="submit" class="buttons" id="add-message-btn">
+              Enter
+            </button>
+          </form>
+          <!-- End of message form -->
+          <!-- Topics divs -->
+          <div class="topics" id="travel-div">
+            <h2>Travel</h2>
+          </div>
+          <div class="topics" id="sport-div">
+            <h2>Sport</h2>
+          </div>
+          <div class="topics" id="gaming-div">
+            <h2>Gaming</h2>
+          </div>
+          <!-- End of topics divs -->
+        </div>
+        <!-- End of topics section -->
+      </section>
+      <!-- End of disscussions section -->
     </main>
     <!-- Footer -->
     <footer>
