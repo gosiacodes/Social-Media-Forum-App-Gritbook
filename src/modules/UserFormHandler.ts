@@ -17,7 +17,7 @@ class UserFormHandler {
 
     validateSignForm(e) {
         e.preventDefault();
-        console.log('validateSignForm clicked');
+        //validate form 
     }
  
 
