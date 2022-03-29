@@ -1,7 +1,7 @@
 const travelForum:HTMLDivElement = document.querySelector('#travel-div');
 const sportForum:HTMLDivElement = document.querySelector('#sport-div');
 const gamingForum:HTMLDivElement = document.querySelector('#gaming-div');
-let travelB:boolean = false;
+let travelB:boolean = true;
 let sportB:boolean = false;
 let gamingB:boolean = false;
  
