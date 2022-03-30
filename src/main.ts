@@ -63,6 +63,7 @@ addMessBtn.addEventListener('click', e => {
     e.preventDefault();
     console.log(travelB);
 
+    // Choose database reference depend on which forum is used
     let dbRef:DatabaseReference;
     if (travelB === true) {
         dbRef = dbRefTravel;
@@ -74,10 +75,24 @@ addMessBtn.addEventListener('click', e => {
         dbRef = dbRefGaming;
     }
 
+    // Create timestamp in message
+    const timestamp = Date.now();
+    const date = new Date(timestamp);
+    const pad = (n) => {   
+        return n<10 ? '0'+n : n;
+    }
+    const messTimestamp = pad(date.getDate())+
+        "-"+pad(date.getMonth()+1)+
+        "-"+date.getFullYear()+
+        ", "+pad(date.getHours())+
+        ":"+pad(date.getMinutes());
+
+
     // Update database with new message
     const messToAdd = {
         message: messInput.value,
-        username: user.innerText
+        username: user.innerText,
+        timestamp: messTimestamp
     }
 
     messInput.value = '';
