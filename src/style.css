@@ -44,6 +44,17 @@ h2 {
   align-items: center;
 }
 
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-ui:hover {
+  background-color: gray
+}
+
 /* Header */
 #header-data {
   display: flex;
@@ -71,7 +82,8 @@ form {
   justify-content: space-between;
 }
 
-#login-form {
+.form-wrapper {
+  width: 45rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
