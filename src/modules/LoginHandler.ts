@@ -29,8 +29,6 @@ export class Loginhandler {
       const usersData = fetchUsersData();
       if(usersData){
         for (const key in usersData) {
-          console.log(usersData[key].username);
-          console.log(usersData[key].password);
           if (this.username.value == usersData[key].username && this.password.value == usersData[key].password) {
             console.log("login success");
             this.clearForm();
@@ -55,6 +53,5 @@ export class Loginhandler {
 
   clearForm() {
     this.signInForm.reset();
-    this.signUpForm.reset();
   }
 }
