@@ -68,12 +68,12 @@ const fetchMessagesData = () => {
 }
 
 const fetchUsersData = () => { 
-    
+    let usersData;
     onValue(dbRefUsers, (snapshot) => {
-    const usersData = snapshot.val();
+    usersData = snapshot.val();
     console.log(usersData);
     });
-
+    return usersData;
 }
 fetchUsersData();
 
@@ -130,4 +130,4 @@ addMessBtn.addEventListener('click', e => {
     }
 });
 
-export { fetchMessagesData }
+export { fetchMessagesData, fetchUsersData };

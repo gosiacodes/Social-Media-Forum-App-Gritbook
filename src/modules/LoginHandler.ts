@@ -1,3 +1,4 @@
+import { fetchUsersData } from "../main";
 export class Loginhandler {
   private signInForm: HTMLFormElement;
   private signUpForm: HTMLFormElement;
@@ -12,7 +13,7 @@ export class Loginhandler {
     this.password = document.querySelector("#password");
    
 
-    document.querySelector("#signin-btn").addEventListener("submit", this.validator.bind(this));
+    document.querySelector("#signin-btn").addEventListener("click", this.validator.bind(this));
     document.querySelector("#btn-signup-ui").addEventListener("click", this.hideUI.bind(this));
 
   }
@@ -20,13 +21,23 @@ export class Loginhandler {
   validator(e) {
     e.preventDefault();
     console.log("validator invoked");
-    
-
-    // if (this.username.value.length > 4 && this.password.value.length > 4) {
-    //   // valid input
-    // } else {
-    //   // invlid input
-    // }
+        
+    // valid input
+    if (this.username.value.length > 4 && this.password.value.length > 4) {
+      const usersData = fetchUsersData();
+      if(usersData){
+        for (const key in usersData) {
+          if (this.username.value == usersData[key].username && this.password.value == usersData[key].password) {
+            console.log("login success");
+            this.signInForm.reset();
+            return;
+          }
+          else{
+            console.log("login failed");
+          }
+        }
+      }
+    } 
   }
   
   hideUI(e) {
