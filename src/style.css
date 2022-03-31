@@ -222,3 +222,52 @@ input {
 #chevron a:hover {
   text-shadow: 2px 3px 5px rgb(74 68 83 / 70%);
 }
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: #005b4c 2px solid;
+  border-radius: 0.5rem;
+  width: 80%;
+  padding: 0.5rem 1.2rem;
+  margin: 0.25rem;
+  box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+}
+.message-container:hover {
+  background-color: #FFEECA;
+  border-color: #766031;
+}
+
+.user-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mess-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0 1rem;
+}
+
+.delete-btn {
+  background-color: #C1564B;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+  transition-duration: 0.3s;
+  box-shadow: 0 3px 8px rgb(74 68 83 / 70%);
+}
+
+.delete-btn:hover {
+  background-color: #fff;
+  color:#FF614C;
+  border: #FF614C 2px solid;
+}
