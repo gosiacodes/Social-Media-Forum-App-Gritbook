@@ -46,7 +46,6 @@ export class UserFormHandler {
         } else {
             alert('signup success');
             this.initNewUser(new User(this.usernameInField.value, this.passwordInField.value));
-           
         }
     }
 
@@ -61,8 +60,8 @@ export class UserFormHandler {
         console.log('initNewUser invoked');
         // Create new user-object
         const userToAdd = {
-        username: user.getUsername(),
-        password: user.getPassword()
+            username: user.getUsername(),
+            password: user.getPassword()
         }
 
         // Update database with new user
