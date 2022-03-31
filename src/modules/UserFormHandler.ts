@@ -58,6 +58,7 @@ export class UserFormHandler {
     }
 
     initNewUser(user: User) {
+        console.log('initNewUser invoked');
         // Create new user-object
         const userToAdd = {
         username: user.getUsername(),
@@ -68,9 +69,9 @@ export class UserFormHandler {
         const dbRefUsers = ref(db, '/users');
         const key:string = push(dbRefUsers).key;
         const newUser = {};
-        user[key] = userToAdd;
+        newUser[key] = userToAdd;
 
-        update(dbRefUsers, user);
+        update(dbRefUsers, newUser);
         this.clearForm();
     }
 
