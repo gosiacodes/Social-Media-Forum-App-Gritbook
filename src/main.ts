@@ -78,7 +78,7 @@ const fetchUsersData = () => {
 fetchUsersData();
 
 new Loginhandler();
-// new UserFormHandler();
+new UserFormHandler();
 
 // When page is loaded (later when user is logged in) show default forum
 showForum('travel-forum');
