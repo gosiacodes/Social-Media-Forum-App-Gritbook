@@ -1,10 +1,11 @@
-// import { ref, remove } from "firebase/database";
+import { ref, remove } from "firebase/database";
 import { fetchMessagesData } from "../main";
+import { db } from "./firebaseApp";
 import { Message } from "./Message";
 
-const travelForum:HTMLDivElement = document.querySelector('#travel-div');
-const sportForum:HTMLDivElement = document.querySelector('#sport-div');
-const gamingForum:HTMLDivElement = document.querySelector('#gaming-div');
+const travelForum:HTMLDivElement = document.querySelector('#travel');
+const sportForum:HTMLDivElement = document.querySelector('#sport');
+const gamingForum:HTMLDivElement = document.querySelector('#gaming');
 let forumSelected:HTMLDivElement = travelForum;
 let travelB:boolean = true;
 let sportB:boolean = false;
@@ -72,6 +73,16 @@ const displayChat = (message:Message) => {
     messContainer.append(userDiv);
     messContainer.append(messDiv);
     forumSelected.append(messContainer);
+
+    // Event listener for delete-button 
+    delButton.addEventListener('click', () => {
+        console.log('delete button clicked');
+        console.log(message.id);
+        console.log(forumSelected.id);
+        const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
+        console.log(messRef);
+        remove(messRef);
+    })
 }
 
 export { showForum, displayChat, forumSelected, travelB, sportB, gamingB };
