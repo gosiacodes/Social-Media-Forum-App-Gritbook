@@ -2,52 +2,86 @@ import { DatabaseReference, onValue, push, ref, update } from "firebase/database
 import { db } from "./modules/firebaseApp";
 import { Loginhandler } from "./modules/LoginHandler";
 import { UserFormHandler } from "./modules/UserFormHandler";
-import { showForum, travelB, sportB, gamingB } from "./modules/displayHandler"
+import { showForum, travelB, sportB, gamingB, displayChat } from "./modules/displayHandler";
+import { Message } from "./modules/Message";
 
-// Created database and template objects
+// Database references
 const dbRefTravel = ref(db, '/messages/travel');
 const dbRefSport = ref(db, 'messages/sport');
 const dbRefGaming = ref(db, 'messages/gaming');
 const dbRefUsers = ref(db, '/users');
+let dbRef:DatabaseReference;
 
 // DOM elements
 const forumButtons = document.querySelectorAll(".forum-btn");
 const user:HTMLHeadingElement = document.querySelector('#user');
 const messInput:HTMLInputElement = document.querySelector("#message");
 const addMessBtn:HTMLButtonElement = document.querySelector("#add-message-btn");
+let messages:Message[] = [];
 
-const fetchAllMessagesData = () => {   
+// Set database reference depend on which forum is used
+const setDbRef = () => {
+    if (travelB === true) {
+        dbRef = dbRefTravel;
+    } 
+    else if (sportB === true) {
+        dbRef = dbRefSport;
+    } 
+    else if (gamingB === true) {
+        dbRef = dbRefGaming;
+    }
+}
 
-    onValue(dbRefTravel, (snapshot) => {
-    const messagesData = snapshot.val();
-    console.log(messagesData);
-    });
+// Function to fetch messages data from database
+const fetchMessagesData = () => {  
 
-    onValue(dbRefSport, (snapshot) => {
+    setDbRef();
+    
+    onValue(dbRef, (snapshot) => {
         const messagesData = snapshot.val();
         console.log(messagesData);
-    });
 
-    onValue(dbRefGaming, (snapshot) => {
-        const messagesData = snapshot.val();
-        console.log(messagesData);
+        // Remove messages from DOM
+        for(const message of messages){
+            message.clearChat();
+        }
+        
+        messages = [];
+        
+        // Add messages from database to messages array
+        for(const key in messagesData){
+            messages.push(new Message(
+                key,
+                messagesData[key].username,
+                messagesData[key].message,
+                messagesData[key].timestamp
+            ));
+        }
+        console.log(messages);
+
+        // Add messages from database to DOM
+        for(const message of messages){
+            displayChat(message);
+        }
     });
 
 }
-fetchAllMessagesData();
 
-const fetchAllUsersData = () => {   
-
+const fetchUsersData = () => { 
+    
     onValue(dbRefUsers, (snapshot) => {
     const usersData = snapshot.val();
     console.log(usersData);
     });
 
 }
-fetchAllUsersData();
+fetchUsersData();
 
 new Loginhandler();
 new UserFormHandler();
+
+// When page is loaded (later when user is logged in) show default forum
+showForum('travel-forum');
 
 // Event listener for sidebar to choose forum-topic
 forumButtons.forEach((btn) => {
@@ -61,19 +95,7 @@ forumButtons.forEach((btn) => {
 // Event listener for add-message-button
 addMessBtn.addEventListener('click', e => {
     e.preventDefault();
-    console.log(travelB);
-
-    // Choose database reference depend on which forum is used
-    let dbRef:DatabaseReference;
-    if (travelB === true) {
-        dbRef = dbRefTravel;
-    } 
-    else if (sportB === true) {
-        dbRef = dbRefSport;
-    } 
-    else if (gamingB === true) {
-        dbRef = dbRefGaming;
-    }
+    setDbRef();
 
     // Create timestamp in message
     const timestamp = Date.now();
@@ -87,19 +109,25 @@ addMessBtn.addEventListener('click', e => {
         ", "+pad(date.getHours())+
         ":"+pad(date.getMinutes());
 
+    if (messInput.value == ''){
+        alert('Enter text to post!');
+    } else {
+        // Create new message-object
+        const messToAdd = {
+            message: messInput.value,
+            username: user.innerText,
+            timestamp: messTimestamp
+        }
 
-    // Update database with new message
-    const messToAdd = {
-        message: messInput.value,
-        username: user.innerText,
-        timestamp: messTimestamp
+        messInput.value = '';
+
+        // Update database with new message
+        const newKey:string = push(dbRef).key;
+        const newMessage = {};
+        newMessage[newKey] = messToAdd;
+
+        update(dbRef, newMessage);
     }
-
-    messInput.value = '';
-
-    const newKey:string = push(dbRef).key;
-    const newMessage = {};
-    newMessage[newKey] = messToAdd;
-
-    update(dbRef, newMessage);
 });
+
+export { fetchMessagesData }
