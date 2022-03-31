@@ -21,30 +21,40 @@ export class Loginhandler {
   validator(e) {
     e.preventDefault();
     console.log("validator invoked");
+    console.log(this.username.value);
+    console.log(this.password.value);
         
     // valid input
-    if (this.username.value.length > 4 && this.password.value.length > 4) {
+    if ((this.username.value.length >= 4) && (this.password.value.length >= 4)){
       const usersData = fetchUsersData();
       if(usersData){
         for (const key in usersData) {
+          console.log(usersData[key].username);
+          console.log(usersData[key].password);
           if (this.username.value == usersData[key].username && this.password.value == usersData[key].password) {
             console.log("login success");
-            this.signInForm.reset();
+            this.clearForm();
             return;
           }
-          else{
-            console.log("login failed");
-          }
         }
+        console.log("login failed");
+        this.clearForm();
       }
-    } 
+    } else {
+      console.log('username/password length is less than 4 characters');
+      this.clearForm();
+    }
   }
   
   hideUI(e) {
     e.preventDefault();
-    console.log('hideUI invoked');
-
+    this.clearForm();
     this.signInForm.style.display = "none";
     this.signUpForm.style.display = "block";
+  }
+
+  clearForm() {
+    this.signInForm.reset();
+    this.signUpForm.reset();
   }
 }
