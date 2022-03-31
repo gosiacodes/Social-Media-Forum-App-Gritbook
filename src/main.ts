@@ -47,7 +47,7 @@ const fetchAllUsersData = () => {
 fetchAllUsersData();
 
 new Loginhandler();
-// new UserFormHandler();
+new UserFormHandler();
 
 // Event listener for sidebar to choose forum-topic
 forumButtons.forEach((btn) => {
