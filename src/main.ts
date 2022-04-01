@@ -14,7 +14,7 @@ let dbRef:DatabaseReference;
 
 // DOM elements
 const forumButtons = document.querySelectorAll(".forum-btn");
-const user:HTMLHeadingElement = document.querySelector('#user');
+const user:HTMLHeadingElement = document.querySelector('.user');
 const messInput:HTMLInputElement = document.querySelector("#message");
 const addMessBtn:HTMLButtonElement = document.querySelector("#add-message-btn");
 let messages:Message[] = [];
