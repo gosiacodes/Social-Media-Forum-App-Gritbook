@@ -31,6 +31,10 @@ export class Loginhandler {
         for (const key in usersData) {
           if (this.username.value == usersData[key].username && this.password.value == usersData[key].password) {
             console.log("login success");
+            // display current user
+            const userItem = document.querySelector('.user');
+            userItem.textContent = usersData[key].username;
+            userItem.setAttribute('id', key);
             this.clearForm();
             return;
           }
