@@ -1,7 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { DatabaseReference, getDatabase, onValue, ref } from "firebase/database";
+import { travelB, sportB, gamingB, displayChat } from "./displayHandler";
+import { Message } from "./Message";
 
-// Your web app's Firebase configuration
+// Gritbook web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBSQ4EwRXTEF6Rs_3REQTWtcOoBu3HOKEQ",
   authDomain: "gritbook-social-media-app.firebaseapp.com",
@@ -18,4 +20,72 @@ const app = initializeApp(firebaseConfig);
 // Database
 const db = getDatabase(app); 
 
-export { db };
+// Database references
+const dbRefTravel = ref(db, '/messages/travel');
+const dbRefSport = ref(db, 'messages/sport');
+const dbRefGaming = ref(db, 'messages/gaming');
+const dbRefUsers = ref(db, '/users');
+let dbRef:DatabaseReference;
+
+let messages:Message[] = [];
+
+// Set database reference depend on which forum is used
+const setDbRef = () => {
+  if (travelB === true) {
+      dbRef = dbRefTravel;
+  } 
+  else if (sportB === true) {
+      dbRef = dbRefSport;
+  } 
+  else if (gamingB === true) {
+      dbRef = dbRefGaming;
+  }
+}
+
+// Function to fetch messages data from database
+const fetchMessagesData = () => {  
+
+  setDbRef();
+  
+  onValue(dbRef, (snapshot) => {
+      const messagesData = snapshot.val();
+      console.log(messagesData);
+
+      // Remove messages from DOM
+      for(const message of messages){
+          message.clearChat();
+      }
+      
+      messages = [];
+      
+      // Add messages from database to messages array
+      for(const key in messagesData){
+          messages.push(new Message(
+              key,
+              messagesData[key].username,
+              messagesData[key].message,
+              messagesData[key].timestamp,
+              messagesData[key].userId
+          ));
+      }
+      console.log(messages);
+
+      // Add messages from database to DOM
+      for(const message of messages){
+          displayChat(message);
+      }
+  });
+}
+
+// Function to fetch users data from database
+const fetchUsersData = () => { 
+  let usersData;
+  onValue(dbRefUsers, (snapshot) => {
+  usersData = snapshot.val();
+  console.log(usersData);
+  });
+  return usersData;
+}
+fetchUsersData();
+
+export { db, setDbRef, dbRef, fetchMessagesData, fetchUsersData };

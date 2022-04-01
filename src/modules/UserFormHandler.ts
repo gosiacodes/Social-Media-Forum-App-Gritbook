@@ -1,7 +1,6 @@
 import { User } from "./User";
-import { fetchUsersData } from "../main";
-import { db } from "../modules/firebaseApp";
-import { DatabaseReference, onValue, push, ref, update } from "firebase/database";
+import { db, fetchUsersData } from "./firebaseApp";
+import { push, ref, update } from "firebase/database";
 
 export class UserFormHandler {
     private signInForm: HTMLFormElement;

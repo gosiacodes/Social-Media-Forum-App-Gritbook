@@ -1,88 +1,20 @@
-import { DatabaseReference, onValue, push, ref, update } from "firebase/database";
-import { db } from "./modules/firebaseApp";
+import { push, update } from "firebase/database";
+import { dbRef, setDbRef } from "./modules/firebaseApp";
 import { Loginhandler } from "./modules/LoginHandler";
 import { UserFormHandler } from "./modules/UserFormHandler";
-import { showForum, travelB, sportB, gamingB, displayChat } from "./modules/displayHandler";
-import { Message } from "./modules/Message";
-
-// Database references
-const dbRefTravel = ref(db, '/messages/travel');
-const dbRefSport = ref(db, 'messages/sport');
-const dbRefGaming = ref(db, 'messages/gaming');
-const dbRefUsers = ref(db, '/users');
-let dbRef:DatabaseReference;
+import { showForum } from "./modules/displayHandler";
 
 // DOM elements
 const forumButtons = document.querySelectorAll(".forum-btn");
 const user:HTMLHeadingElement = document.querySelector('.user');
 const messInput:HTMLInputElement = document.querySelector("#message");
 const addMessBtn:HTMLButtonElement = document.querySelector("#add-message-btn");
-let messages:Message[] = [];
 
 // Testing adding logo png to DOM for GitHub pages
 // const imgUrl = new URL('img/conversation_128.png', import.meta.url);
 // const img = document.createElement('img');
 // img.src = imgUrl.href;
 // document.body.append(img);
-
-// Set database reference depend on which forum is used
-const setDbRef = () => {
-    if (travelB === true) {
-        dbRef = dbRefTravel;
-    } 
-    else if (sportB === true) {
-        dbRef = dbRefSport;
-    } 
-    else if (gamingB === true) {
-        dbRef = dbRefGaming;
-    }
-}
-
-// Function to fetch messages data from database
-const fetchMessagesData = () => {  
-
-    setDbRef();
-    
-    onValue(dbRef, (snapshot) => {
-        const messagesData = snapshot.val();
-        console.log(messagesData);
-
-        // Remove messages from DOM
-        for(const message of messages){
-            message.clearChat();
-        }
-        
-        messages = [];
-        
-        // Add messages from database to messages array
-        for(const key in messagesData){
-            messages.push(new Message(
-                key,
-                messagesData[key].username,
-                messagesData[key].message,
-                messagesData[key].timestamp,
-                messagesData[key].userId
-            ));
-        }
-        console.log(messages);
-
-        // Add messages from database to DOM
-        for(const message of messages){
-            displayChat(message);
-        }
-    });
-
-}
-
-const fetchUsersData = () => { 
-    let usersData;
-    onValue(dbRefUsers, (snapshot) => {
-    usersData = snapshot.val();
-    console.log(usersData);
-    });
-    return usersData;
-}
-fetchUsersData();
 
 new Loginhandler();
 new UserFormHandler();
@@ -137,5 +69,3 @@ addMessBtn.addEventListener('click', e => {
         update(dbRef, newMessage);
     }
 });
-
-export { fetchMessagesData, fetchUsersData };
