@@ -48,7 +48,7 @@ export class Loginhandler {
     e.preventDefault();
     this.clearForm();
     this.signInForm.style.display = "none";
-    this.signUpForm.style.display = "block";
+    this.signUpForm.style.display = "flex";
   }
 
   clearForm() {

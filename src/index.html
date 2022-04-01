@@ -25,7 +25,7 @@
     <main>
       <!-- Header -->
       <div id="header-data">
-        <h2 id="user">Name</h2>
+        <h2 class="user"><i class="fa-solid fa-user-astronaut"></i> Name</h2>
         <div class="logo">
           <h1 id="home">Gritbook</h1>
           <img
@@ -39,34 +39,60 @@
       </div>
       <!-- End of header -->
       <!-- Login form -->
-      <form class="form-wrapper" id="login-form" >
+      <form class="form-wrapper col" id="login-form">
+        <div class="row">
+        <h3 class="account-title">Welcome back</h3>
+        </div>
         <div class="row">
           <input type="text" placeholder="Username" id="username" required />
-          <input type="password" placeholder="Password" id="password" required />
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            required
+          />
         </div>
         <div class="col">
           <button class="buttons" id="signin-btn">Sign In</button>
-          <h3>or</h3>
-          <button class="form-ui" id="btn-signup-ui" formnovalidate>Sign up</button>
+          <h5 class="account-title">Don't have an account?</h5>
+          <button class="form-ui" id="btn-signup-ui" formnovalidate>
+            Sign up
+          </button>
         </div>
       </form>
       <!-- End of login form -->
       <!-- ---------------------------------------------------------------------- -->
-
       <!-- Sign Up form -->
-      <form class="form-wrapper" id="signup-form" style="display: none;">
+      <form class="form-wrapper col" id="signup-form" style="display: none">
         <div class="row">
-          <input type="text" placeholder="Username" id="new_username" required />
-          <input type="password" placeholder="Password" id="new_password" required />
-          <input type="password" placeholder="Repeat Password" id="repeat_password" required />
+        <h3 class="account-title">Create account</h3>
+        </div>
+        <div class="row">
+          <input
+            type="text"
+            placeholder="Username"
+            id="new_username"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="new_password"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Repeat Password"
+            id="repeat_password"
+            required
+          />
         </div>
         <div class="col">
-          <!-- <button type="submit" class="buttons" id="signup-btn">Sign Up</button> -->
-
           <button class="buttons" id="signup-btn">Sign Up</button>
-          <h3>or</h3>
-          <button class="form-ui" id="btn-display-signin" formnovalidate> Sign in</button>
-
+          <h5 class="account-title">Already have an account?</h5>
+          <button class="form-ui" id="btn-display-signin" formnovalidate>
+            Sign in
+          </button>
         </div>
       </form>
       <!-- End of Sign Up form -->
@@ -84,8 +110,12 @@
           <a href="#gaming" class="forum-btn" id="gaming-forum"
             ><i class="fa-solid fa-gamepad"></i> Gaming</a
           >
+          <a href="#profiles" class="forum-btn" id="users-profiles"
+            ><i class="fa-solid fa-user-secret"></i> Users</a
+          >
         </div>
         <!-- End of sidebar -->
+        <!-- Topics section -->
         <div id="topics-section">
           <!-- Message form -->
           <form id="message-form">
@@ -103,12 +133,15 @@
           <!-- Topics divs -->
           <div class="topics" id="travel">
             <h2>Travel</h2>
+            <div class="chat-container" id="travel-chat"></div>
           </div>
           <div class="topics" id="sport">
             <h2>Sport</h2>
+            <div class="chat-container" id="sport-chat"></div>
           </div>
           <div class="topics" id="gaming">
             <h2>Gaming</h2>
+            <div class="chat-container" id="gaming-chat"></div>
           </div>
           <!-- End of topics divs -->
         </div>
@@ -120,10 +153,7 @@
     <footer>
       <div class="footer">
         <p class="copyright">Gritbook Ltd.</p>
-        <p class="copyright">
-          Copyright &copy; 2022 | Othman Abdolhalim, Arbie,
-          Malgorzata Pick
-        </p>
+        <p class="copyright">Copyright &copy; 2022 | Othman, Arbie, Gosia</p>
         <span id="chevron" title="To the top">
           <a href="#"><i class="fas fa-chevron-circle-up"></i></a>
         </span>

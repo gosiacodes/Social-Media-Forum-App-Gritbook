@@ -6,7 +6,11 @@ import { Message } from "./Message";
 const travelForum:HTMLDivElement = document.querySelector('#travel');
 const sportForum:HTMLDivElement = document.querySelector('#sport');
 const gamingForum:HTMLDivElement = document.querySelector('#gaming');
+const travelChat:HTMLDivElement = document.querySelector('#travel-chat');
+const sportChat:HTMLDivElement = document.querySelector('#sport-chat');
+const gamingChat:HTMLDivElement = document.querySelector('#gaming-chat');
 let forumSelected:HTMLDivElement = travelForum;
+let chatSelected:HTMLDivElement = travelChat;
 let travelB:boolean = true;
 let sportB:boolean = false;
 let gamingB:boolean = false;
@@ -15,6 +19,7 @@ let gamingB:boolean = false;
 const showForum = (forum:string) => {
     if (forum == 'travel-forum'){
         forumSelected = travelForum;
+        chatSelected = travelChat;
         travelForum.style.display = 'flex';
         sportForum.style.display = 'none';
         gamingForum.style.display = 'none';
@@ -25,6 +30,7 @@ const showForum = (forum:string) => {
     }
     else if (forum == 'sport-forum'){
         forumSelected = sportForum;
+        chatSelected = sportChat;
         travelForum.style.display = 'none';
         sportForum.style.display = 'flex';
         gamingForum.style.display = 'none';
@@ -35,6 +41,7 @@ const showForum = (forum:string) => {
     }
     else if (forum == 'gaming-forum'){
         forumSelected = gamingForum;
+        chatSelected = gamingChat;
         travelForum.style.display = 'none';
         sportForum.style.display = 'none';
         gamingForum.style.display = 'flex';
@@ -72,7 +79,8 @@ const displayChat = (message:Message) => {
     messDiv.append(delButton);
     messContainer.append(userDiv);
     messContainer.append(messDiv);
-    forumSelected.append(messContainer);
+    chatSelected.prepend(messContainer);
+    forumSelected.append(chatSelected);
 
     // Event listener for delete-button 
     delButton.addEventListener('click', () => {

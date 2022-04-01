@@ -53,7 +53,7 @@ export class UserFormHandler {
         e.preventDefault()
         console.log('hideUI invoked');
         this.signUpform.style.display = "none";
-        this.signInForm.style.display = "block";
+        this.signInForm.style.display = "flex";
     }
 
     initNewUser(user: User) {
