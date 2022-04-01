@@ -54,7 +54,8 @@ const fetchMessagesData = () => {
                 key,
                 messagesData[key].username,
                 messagesData[key].message,
-                messagesData[key].timestamp
+                messagesData[key].timestamp,
+                messagesData[key].userId
             ));
         }
         console.log(messages);
@@ -116,7 +117,8 @@ addMessBtn.addEventListener('click', e => {
         const messToAdd = {
             message: messInput.value,
             username: user.innerText,
-            timestamp: messTimestamp
+            timestamp: messTimestamp,
+            userId: user.id
         }
 
         messInput.value = '';

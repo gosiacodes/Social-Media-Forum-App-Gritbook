@@ -7,7 +7,8 @@ class Message {
         public readonly id: string,
         public readonly username: string,
         public message: string,
-        public readonly timestamp: string
+        public readonly timestamp: string,
+        public readonly userId: string
     ) { }
     public clearChat(): void {
         document.querySelector(`#${this.id}`).remove();
