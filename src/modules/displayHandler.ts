@@ -54,7 +54,7 @@ const showForum = (forum:string) => {
 
 // Function for displaying chat i DOM
 const displayChat = (message:Message) => {
-    // const user:HTMLHeadingElement = document.querySelector("#user");
+    const user:HTMLHeadingElement = document.querySelector(".user");
     const userDiv:HTMLDivElement = document.createElement('div');
     const messDiv:HTMLDivElement = document.createElement('div');
     const usernameEl:HTMLHeadingElement = document.createElement('h5');
@@ -76,7 +76,18 @@ const displayChat = (message:Message) => {
     userDiv.append(usernameEl);
     userDiv.append(dateEl);
     messDiv.append(messageEl);
-    messDiv.append(delButton);
+    if (message.username == user.innerText && message.userId == user.id){
+        messDiv.append(delButton);
+        // Event listener for delete-button 
+        delButton.addEventListener('click', () => {
+            console.log('delete button clicked');
+            console.log(message.id);
+            console.log(forumSelected.id);
+            const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
+            console.log(messRef);
+            remove(messRef);
+        })
+    }
     messContainer.append(userDiv);
     messContainer.append(messDiv);
     chatSelected.prepend(messContainer);
@@ -93,5 +104,5 @@ const displayChat = (message:Message) => {
     })
 }
 
-export { showForum, displayChat, forumSelected, travelB, sportB, gamingB };
+export { showForum, displayChat, travelB, sportB, gamingB };
 
