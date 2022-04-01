@@ -17,6 +17,16 @@ main {
   padding: 0 1rem;
 }
 
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 00.5rem;
+  /* padding: 1rem; */
+
+
+}
+
 h1,
 h2,
 h3,
@@ -66,7 +76,7 @@ h2 {
 
 .user {
   margin: 1.5rem;
-  padding-left: 0.5rem;
+  /* padding-left: 0.5rem; */
 }
 
 .logo {
