@@ -1,4 +1,5 @@
-import { fetchUsersData } from "../main";
+import { fetchUsersData } from "./firebaseApp";
+
 export class Loginhandler {
   private signInForm: HTMLFormElement;
   private signUpForm: HTMLFormElement;

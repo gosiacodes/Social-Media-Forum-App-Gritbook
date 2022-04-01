@@ -1,6 +1,5 @@
 import { ref, remove } from "firebase/database";
-import { fetchMessagesData } from "../main";
-import { db } from "./firebaseApp";
+import { db, fetchMessagesData } from "./firebaseApp";
 import { Message } from "./Message";
 
 const travelForum:HTMLDivElement = document.querySelector('#travel');
