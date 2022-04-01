@@ -20,10 +20,10 @@ const addMessBtn:HTMLButtonElement = document.querySelector("#add-message-btn");
 let messages:Message[] = [];
 
 // Testing adding logo png to DOM for GitHub pages
-const imgUrl = new URL('img/conversation_128.png', import.meta.url);
-const img = document.createElement('img');
-img.src = imgUrl.href;
-document.body.append(img);
+// const imgUrl = new URL('img/conversation_128.png', import.meta.url);
+// const img = document.createElement('img');
+// img.src = imgUrl.href;
+// document.body.append(img);
 
 // Set database reference depend on which forum is used
 const setDbRef = () => {
