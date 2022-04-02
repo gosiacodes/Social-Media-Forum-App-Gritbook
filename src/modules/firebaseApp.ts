@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { DatabaseReference, getDatabase, onValue, ref } from "firebase/database";
-import { travelB, sportB, gamingB, displayChat } from "./displayHandler";
+import { travelB, sportB, gamingB } from "./displayHandler";
 import { Message } from "./Message";
 
 // Gritbook web app's Firebase configuration
@@ -72,7 +72,7 @@ const fetchMessagesData = () => {
 
       // Add messages from database to DOM
       for(const message of messages){
-          displayChat(message);
+          message.displayChat();
       }
   });
 }

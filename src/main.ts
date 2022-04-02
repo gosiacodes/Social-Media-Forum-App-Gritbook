@@ -1,71 +1,31 @@
-import { push, update } from "firebase/database";
-import { dbRef, setDbRef } from "./modules/firebaseApp";
 import { Loginhandler } from "./modules/LoginHandler";
 import { UserFormHandler } from "./modules/UserFormHandler";
 import { showForum } from "./modules/displayHandler";
+import { setForum, addMessageToDatabase } from "./modules/eventListeners";
 
 // DOM elements
 const forumButtons = document.querySelectorAll(".forum-btn");
-const user:HTMLHeadingElement = document.querySelector('.user');
-const messInput:HTMLInputElement = document.querySelector("#message");
 const addMessBtn:HTMLButtonElement = document.querySelector("#add-message-btn");
-
-// Testing adding logo png to DOM for GitHub pages
-// const imgUrl = new URL('img/conversation_128.png', import.meta.url);
-// const img = document.createElement('img');
-// img.src = imgUrl.href;
-// document.body.append(img);
 
 new Loginhandler();
 new UserFormHandler();
 
-// When page is loaded (later when user is logged in) show default forum
+// When page is loaded show default forum
+// When hide / show UI will be fixed, this can be deleted here,
+// because this code is also in LoginHandler / when user is logged in
 showForum('travel-forum');
 
 // Event listener for sidebar to choose forum-topic
 forumButtons.forEach((btn) => {
-    btn.addEventListener("click", (event:Event) => {
-        const target = event.target as HTMLElement;
-        const forum:string = target.id;
-        showForum(forum);
-    });
+    btn.addEventListener("click", setForum); 
 });
 
 // Event listener for add-message-button
-addMessBtn.addEventListener('click', e => {
-    e.preventDefault();
-    setDbRef();
+addMessBtn.addEventListener('click', addMessageToDatabase)
 
-    // Create timestamp in message
-    const timestamp = Date.now();
-    const date = new Date(timestamp);
-    const pad = (n) => {   
-        return n<10 ? '0'+n : n;
-    }
-    const messTimestamp = pad(date.getDate())+
-        "-"+pad(date.getMonth()+1)+
-        "-"+date.getFullYear()+
-        ", "+pad(date.getHours())+
-        ":"+pad(date.getMinutes());
 
-    if (messInput.value == ''){
-        alert('Enter text to post!');
-    } else {
-        // Create new message-object
-        const messToAdd = {
-            message: messInput.value,
-            username: user.innerText,
-            timestamp: messTimestamp,
-            userId: user.id
-        }
-
-        messInput.value = '';
-
-        // Update database with new message
-        const newKey:string = push(dbRef).key;
-        const newMessage = {};
-        newMessage[newKey] = messToAdd;
-
-        update(dbRef, newMessage);
-    }
-});
+// Testing adding image to DOM for GitHub pages
+// const imgUrl = new URL('img/conversation_128.png', import.meta.url);
+// const img = document.createElement('img');
+// img.src = imgUrl.href;
+// document.body.append(img);

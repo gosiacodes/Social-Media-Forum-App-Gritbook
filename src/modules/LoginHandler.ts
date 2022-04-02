@@ -1,3 +1,4 @@
+import { showForum } from "./displayHandler";
 import { fetchUsersData } from "./firebaseApp";
 
 export class Loginhandler {
@@ -37,6 +38,7 @@ export class Loginhandler {
             userItem.textContent = usersData[key].username;
             userItem.setAttribute('id', key);
             this.clearForm();
+            showForum('travel-forum');
             return;
           }
         }

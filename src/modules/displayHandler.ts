@@ -51,8 +51,8 @@ const showForum = (forum:string) => {
     }
 }
 
-// Function for displaying chat i DOM
-const displayChat = (message:Message) => {
+// Function for displaying messages in chat in DOM
+const displayMessages = (message:Message) => {
     const user:HTMLHeadingElement = document.querySelector(".user");
     const userDiv:HTMLDivElement = document.createElement('div');
     const messDiv:HTMLDivElement = document.createElement('div');
@@ -75,15 +75,13 @@ const displayChat = (message:Message) => {
     userDiv.append(usernameEl);
     userDiv.append(dateEl);
     messDiv.append(messageEl);
+    // Show delete-button in the message only if name and id of the author
+    // is the same as the name and id of the logged in user
     if (message.username == user.innerText && message.userId == user.id){
         messDiv.append(delButton);
         // Event listener for delete-button 
         delButton.addEventListener('click', () => {
-            console.log('delete button clicked');
-            console.log(message.id);
-            console.log(forumSelected.id);
             const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
-            console.log(messRef);
             remove(messRef);
         })
     }
@@ -92,16 +90,7 @@ const displayChat = (message:Message) => {
     chatSelected.prepend(messContainer);
     forumSelected.append(chatSelected);
 
-    // Event listener for delete-button 
-    delButton.addEventListener('click', () => {
-        console.log('delete button clicked');
-        console.log(message.id);
-        console.log(forumSelected.id);
-        const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
-        console.log(messRef);
-        remove(messRef);
-    })
 }
 
-export { showForum, displayChat, travelB, sportB, gamingB };
+export { showForum, displayMessages, travelB, sportB, gamingB };
 
