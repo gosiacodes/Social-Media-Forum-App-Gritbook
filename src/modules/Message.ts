@@ -1,5 +1,4 @@
-import { db } from "./firebaseApp";
-import { ref, remove, update } from "firebase/database";
+import { displayMessages } from "./displayHandler";
 
 // Message class med constructor
 class Message {
@@ -12,6 +11,9 @@ class Message {
     ) { }
     public clearChat(): void {
         document.querySelector(`#${this.id}`).remove();
+    }
+    public displayChat():void {
+          displayMessages(this);
     }
 }
 
