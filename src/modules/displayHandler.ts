@@ -79,10 +79,15 @@ const displayMessages = (message:Message) => {
     // is the same as the name and id of the logged in user
     if (message.username == user.innerText && message.userId == user.id){
         messDiv.append(delButton);
-        // Event listener for delete-button 
-        delButton.addEventListener('click', () => {
-            const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
-            remove(messRef);
+        // Event listener for delete-button (for own message)
+        delButton.addEventListener('click', (e:Event) => {
+            e.preventDefault();
+            message.deleteMessage(messageEl);
+        })
+        // Event listener for message editing by clicking on it (for own message)
+        messageEl.addEventListener('click', (e:Event) => {
+            e.preventDefault();
+            message.editMessage(messageEl);
         })
     }
     messContainer.append(userDiv);
@@ -91,6 +96,5 @@ const displayMessages = (message:Message) => {
     forumSelected.append(chatSelected);
 
 }
-
-export { showForum, displayMessages, travelB, sportB, gamingB };
+export { showForum, displayMessages, travelB, sportB, gamingB, forumSelected };
 

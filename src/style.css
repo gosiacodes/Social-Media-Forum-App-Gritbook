@@ -289,6 +289,15 @@ input {
   border: #ff614c 2px solid;
 }
 
+.mess-edit:focus {
+  background-color: #fff;
+  border: #ff614c 2px solid;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0.25rem 0.5rem;
+}
+
 /* Footer */
 .footer {
   display: flex;
