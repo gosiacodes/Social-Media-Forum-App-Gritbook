@@ -1,6 +1,7 @@
-import { push, update } from "firebase/database";
-import { showForum } from "./displayHandler";
-import { dbRef, setDbRef } from "./firebaseApp";
+import { push, ref, remove, update } from "firebase/database";
+import { forumSelected, showForum } from "./displayHandler";
+import { db, dbRef, fetchMessagesData, setDbRef } from "./firebaseApp";
+import { Message } from "./Message";
 
 const user:HTMLHeadingElement = document.querySelector('.user');
 const messInput:HTMLInputElement = document.querySelector("#message");
@@ -52,4 +53,41 @@ const addMessageToDatabase = (e:Event) => {
     }
 }
 
-export { setForum, addMessageToDatabase }
+// Function to delete message from database
+const deleteMessageFromDatabase = (message:Message, messEl:HTMLParagraphElement) => {
+    const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
+    remove(messRef);
+}
+
+// Function to edit message and update it in database
+const editAndUpdateMessage = (message:Message, messEl:HTMLParagraphElement) => {
+    messEl.contentEditable = "true";
+        messEl.className = 'mess-edit';
+        messEl.focus();
+        const newMessage:HTMLParagraphElement = document.querySelector('.mess-edit');
+
+        // Event listener for finishing message editing by pushing enter-key
+        messEl.addEventListener('keydown', (event:KeyboardEvent) => {
+            if (event.code === "Enter") {
+                event.preventDefault();
+                messEl.contentEditable = "false";
+                message.message = newMessage.innerText;
+                
+                // Update message in database
+                const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
+                const updates = {};
+                updates['/message'] = message.message;
+                update(messRef, updates);
+                messEl.classList.remove('mess-edit');
+            }
+            // If escape-key pushed, don't update message
+            else if (event.code === "Escape") {
+                event.preventDefault();
+                messEl.contentEditable = "false";
+                messEl.classList.remove('mess-edit');
+                fetchMessagesData();
+            }
+        });
+}
+
+export { setForum, addMessageToDatabase, deleteMessageFromDatabase, editAndUpdateMessage }
