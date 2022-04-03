@@ -19,8 +19,8 @@ class Message {
           displayMessages(this);
     }
     // Function to delete own message 
-    public deleteMessage(messageEl:HTMLParagraphElement):void {
-        deleteMessageFromDatabase(this, messageEl);
+    public deleteMessage():void {
+        deleteMessageFromDatabase(this);
     }
     // Function to edit own message
     public editMessage(messageEl:HTMLParagraphElement):void {
