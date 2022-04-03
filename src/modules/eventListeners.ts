@@ -54,7 +54,7 @@ const addMessageToDatabase = (e:Event) => {
 }
 
 // Function to delete message from database
-const deleteMessageFromDatabase = (message:Message, messEl:HTMLParagraphElement) => {
+const deleteMessageFromDatabase = (message:Message) => {
     const messRef = ref(db, '/messages/'+ forumSelected.id + '/' + message.id);
     remove(messRef);
 }

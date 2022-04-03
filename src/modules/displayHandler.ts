@@ -82,7 +82,7 @@ const displayMessages = (message:Message) => {
         // Event listener for delete-button (for own message)
         delButton.addEventListener('click', (e:Event) => {
             e.preventDefault();
-            message.deleteMessage(messageEl);
+            message.deleteMessage();
         })
         // Event listener for message editing by clicking on it (for own message)
         messageEl.addEventListener('click', (e:Event) => {
