@@ -2,7 +2,7 @@ import { User } from "./User";
 import { db, fetchUsersData } from "./firebaseApp";
 import { push, ref, update } from "firebase/database";
 
-export class UserFormHandler {
+export class SignupHandler {
     private signInForm: HTMLFormElement;
     private signUpform: HTMLFormElement;
     private usernameInField: HTMLInputElement;
