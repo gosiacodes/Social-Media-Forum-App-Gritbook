@@ -46,7 +46,6 @@ export class Loginhandler {
   // On logout clear user data and show login UI
   logout(e) {
     e.preventDefault();
-    console.log('logout');
     const profileDiv: HTMLDivElement = document.querySelector('.profile');
     const forumSection: HTMLDivElement = document.querySelector('#forums-section');
     const loginForm: HTMLDivElement = document.querySelector('#login-form');
@@ -65,7 +64,6 @@ export class Loginhandler {
 
   validator(e) {
     e.preventDefault();
-    // console.log("validator invoked");
         
     // valid input
     if ((this.username.value.length >= 4) && (this.password.value.length >= 4)){
