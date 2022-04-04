@@ -26,7 +26,7 @@ export class Loginhandler {
     const forumSection: HTMLDivElement = document.querySelector('#forums-section');
     const loginForm: HTMLDivElement = document.querySelector('#login-form');
     const logoutBtn: HTMLDivElement = document.querySelector('#logout-btn');
-
+    const headerData:HTMLDivElement = document.querySelector('#header-data');
     
     console.log('login success');
     const userItem = document.querySelector('.user');
@@ -35,6 +35,8 @@ export class Loginhandler {
     this.clearForm();
     showForum('travel-forum');
 
+    headerData.style.justifyContent = 'space-between';
+    profileDiv.style.display = "flex";
     forumSection.style.display = "flex";
     loginForm.style.display = "none";
     logoutBtn.style.display = "inline-block";
@@ -47,9 +49,14 @@ export class Loginhandler {
     const profileDiv: HTMLDivElement = document.querySelector('.profile');
     const forumSection: HTMLDivElement = document.querySelector('#forums-section');
     const loginForm: HTMLDivElement = document.querySelector('#login-form');
-    profileDiv.style.display = "flex";
+    const logoutBtn: HTMLDivElement = document.querySelector('#logout-btn');
+    const headerData:HTMLDivElement = document.querySelector('#header-data');
+
+    headerData.style.justifyContent = 'center';
+    profileDiv.style.display = "none";
     forumSection.style.display = "none";
     loginForm.style.display = "flex";
+    logoutBtn.style.display = "none";
 
     const userItem = document.querySelector('.user');
     userItem.textContent = "";
