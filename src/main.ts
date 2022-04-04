@@ -1,5 +1,5 @@
 import { Loginhandler } from "./modules/LoginHandler";
-import { UserFormHandler } from "./modules/UserFormHandler";
+import { SignupHandler } from "./modules/SignupHandler";
 import { showForum } from "./modules/displayHandler";
 import { setForum, addMessageToDatabase } from "./modules/eventListeners";
 
@@ -8,7 +8,7 @@ const forumButtons = document.querySelectorAll(".forum-btn");
 const addMessBtn:HTMLButtonElement = document.querySelector("#add-message-btn");
 
 new Loginhandler();
-new UserFormHandler();
+new SignupHandler();
 
 // When page is loaded show default forum
 // When hide / show UI will be fixed, this can be deleted here,

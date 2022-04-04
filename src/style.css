@@ -21,7 +21,8 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 00.5rem;
+  padding-left: 0.5rem;
+  display: "none";
   /* padding: 1rem; */
 
 
@@ -91,6 +92,10 @@ h2 {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+#logout-btn {
+  display: none;
 }
 
 /* Forms */
@@ -177,6 +182,7 @@ input {
   display: flex;
   flex-direction: row;
   width: 100%;
+  display: none;
 }
 
 /* Sidebar */

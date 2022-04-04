@@ -14,10 +14,45 @@ export class Loginhandler {
     this.username = document.querySelector("#username");
     this.password = document.querySelector("#password");
    
-
+    
     document.querySelector("#signin-btn").addEventListener("click", this.validator.bind(this));
-    document.querySelector("#btn-signup-ui").addEventListener("click", this.hideUI.bind(this));
+    document.querySelector("#btn-signup-ui").addEventListener("click", this.hideUI.bind(this)); 
+    document.querySelector("#logout-btn").addEventListener("click", this.logout.bind(this)); 
+  }
 
+  // On login show user data and hide login UI
+  login(username: string, key: string) {
+    const profileDiv: HTMLDivElement = document.querySelector('.profile');
+    const forumSection: HTMLDivElement = document.querySelector('#forums-section');
+    const loginForm: HTMLDivElement = document.querySelector('#login-form');
+    const logoutBtn: HTMLDivElement = document.querySelector('#logout-btn');
+
+    
+    console.log('login success');
+    const userItem = document.querySelector('.user');
+    userItem.textContent = username;
+    userItem.setAttribute('id', key);
+    this.clearForm();
+    showForum('travel-forum');
+
+    forumSection.style.display = "flex";
+    loginForm.style.display = "none";
+    logoutBtn.style.display = "inline-block";
+  }
+
+  // On logout clear user data and show login UI
+  logout(e) {
+    e.preventDefault();
+    console.log('logout');
+    const profileDiv: HTMLDivElement = document.querySelector('.profile');
+    const forumSection: HTMLDivElement = document.querySelector('#forums-section');
+    const loginForm: HTMLDivElement = document.querySelector('#login-form');
+    profileDiv.style.display = "flex";
+    forumSection.style.display = "none";
+    loginForm.style.display = "flex";
+
+    const userItem = document.querySelector('.user');
+    userItem.textContent = "";
   }
 
   validator(e) {
@@ -32,13 +67,8 @@ export class Loginhandler {
       if(usersData){
         for (const key in usersData) {
           if (this.username.value == usersData[key].username && this.password.value == usersData[key].password) {
-            console.log("login success");
-            // display current user
-            const userItem = document.querySelector('.user');
-            userItem.textContent = usersData[key].username;
-            userItem.setAttribute('id', key);
-            this.clearForm();
-            showForum('travel-forum');
+            // login success
+            this.login(usersData[key].username, key);
             return;
           }
         }
