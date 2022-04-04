@@ -30,6 +30,6 @@ export class User {
   }
 
   getImage() {
-    return this.image;
+    return this.imgageUrl;
   }
 }
