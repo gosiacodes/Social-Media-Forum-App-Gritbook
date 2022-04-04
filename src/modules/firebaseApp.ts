@@ -84,6 +84,6 @@ const fetchUsersData = () => {
   });
   return usersData;
 }
-// fetchUsersData();
+fetchUsersData();
 
 export { db, setDbRef, dbRef, fetchMessagesData, fetchUsersData };
