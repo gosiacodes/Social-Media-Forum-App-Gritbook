@@ -2,7 +2,7 @@ export class User {
   private username: string;
   private password: string;
   private desc: string;
-  private imgageUrl: string;
+  private imageUrl: string;
 
   constructor(
     username: string,
@@ -14,7 +14,7 @@ export class User {
     this.username = username;
     this.password = password;
     this.desc = desc;
-    this.imgageUrl = image;
+    this.imageUrl = image;
   }
 
   getUsername() {
@@ -30,6 +30,6 @@ export class User {
   }
 
   getImage() {
-    return this.imgageUrl;
+    return this.imageUrl;
   }
 }
