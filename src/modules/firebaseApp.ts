@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { DatabaseReference, getDatabase, onValue, ref } from "firebase/database";
+import { DatabaseReference, DataSnapshot, getDatabase, onValue, ref } from "firebase/database";
 import { travelB, sportB, gamingB } from "./displayHandler";
 import { Message } from "./Message";
 
@@ -21,16 +21,16 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app); 
 
 // Database references
-const dbRefTravel = ref(db, '/messages/travel');
-const dbRefSport = ref(db, 'messages/sport');
-const dbRefGaming = ref(db, 'messages/gaming');
-const dbRefUsers = ref(db, '/users');
+const dbRefTravel:DatabaseReference = ref(db, '/messages/travel');
+const dbRefSport:DatabaseReference = ref(db, 'messages/sport');
+const dbRefGaming:DatabaseReference = ref(db, 'messages/gaming');
+const dbRefUsers:DatabaseReference = ref(db, '/users');
 let dbRef:DatabaseReference;
 
 let messages:Message[] = [];
 
 // Set database reference depend on which forum is used
-const setDbRef = () => {
+const setDbRef = ():void => {
   if (travelB === true) {
       dbRef = dbRefTravel;
   } 
@@ -43,10 +43,9 @@ const setDbRef = () => {
 }
 
 // Function to fetch messages data from database
-const fetchMessagesData = () => {  
+const fetchMessagesData = ():void => {  
 
-  setDbRef();
-  
+  setDbRef();  
   onValue(dbRef, (snapshot) => {
       const messagesData = snapshot.val();
       console.log(messagesData);
@@ -54,8 +53,7 @@ const fetchMessagesData = () => {
       // Remove messages from DOM
       for(const message of messages){
           message.clearChat();
-      }
-      
+      }      
       messages = [];
       
       // Add messages from database to messages array
@@ -79,13 +77,13 @@ const fetchMessagesData = () => {
 
 // Function to fetch users data from database
 const fetchUsersData = () => { 
-  let usersData;
+  let usersData:DataSnapshot;
   onValue(dbRefUsers, (snapshot) => {
   usersData = snapshot.val();
   console.log(usersData);
   });
   return usersData;
 }
-fetchUsersData();
+// fetchUsersData();
 
 export { db, setDbRef, dbRef, fetchMessagesData, fetchUsersData };

@@ -1,5 +1,4 @@
-import { ref, remove } from "firebase/database";
-import { db, fetchMessagesData } from "./firebaseApp";
+import { fetchMessagesData } from "./firebaseApp";
 import { Message } from "./Message";
 
 // DOM elements
@@ -20,7 +19,7 @@ let sportB:boolean = false;
 let gamingB:boolean = false;
  
 // Function to show discussion forum depending on the topic selected
-const showForum = (forum:string) => {
+const showForum = (forum:string):void => {
     if (forum == 'travel-forum'){
         forumSelected = travelForum;
         chatSelected = travelChat;
@@ -57,7 +56,7 @@ const showForum = (forum:string) => {
 }
 
 // Function for displaying messages in chat in DOM
-const displayMessages = (message:Message) => {
+const displayMessages = (message:Message):void => {
     const user:HTMLHeadingElement = document.querySelector(".user");
     const userDiv:HTMLDivElement = document.createElement('div');
     const messDiv:HTMLDivElement = document.createElement('div');
@@ -107,8 +106,8 @@ const displayMessages = (message:Message) => {
 
 }
 
-// Show modal for user profile.
-const showUserModal = () => {
+// Show modal for user profile
+const showUserModal = ():void => {
     userModal.style.display = "block";
 
     // Add event listeners for closing user profile
