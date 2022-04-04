@@ -2,12 +2,17 @@ import { ref, remove } from "firebase/database";
 import { db, fetchMessagesData } from "./firebaseApp";
 import { Message } from "./Message";
 
+// DOM elements
 const travelForum:HTMLDivElement = document.querySelector('#travel');
 const sportForum:HTMLDivElement = document.querySelector('#sport');
 const gamingForum:HTMLDivElement = document.querySelector('#gaming');
 const travelChat:HTMLDivElement = document.querySelector('#travel-chat');
 const sportChat:HTMLDivElement = document.querySelector('#sport-chat');
 const gamingChat:HTMLDivElement = document.querySelector('#gaming-chat');
+const userModal:HTMLDivElement = document.querySelector("#user-profile-modal");
+const closeProfileBtn = document.querySelector("#profile-close-btn");
+const closeUserModal = document.querySelector("#user-close");
+// Forum settings
 let forumSelected:HTMLDivElement = travelForum;
 let chatSelected:HTMLDivElement = travelChat;
 let travelB:boolean = true;
@@ -63,6 +68,7 @@ const displayMessages = (message:Message) => {
     const messContainer:HTMLDivElement = document.createElement('div');
 
     usernameEl.innerText = message.username;
+    usernameEl.className = 'mess-show-profile';
     dateEl.innerText = message.timestamp;
     messageEl.innerText = message.message;
     delButton.innerText = 'X';
@@ -73,6 +79,10 @@ const displayMessages = (message:Message) => {
     messContainer.id = message.id;
 
     userDiv.append(usernameEl);
+    usernameEl.addEventListener('click', (e:Event) => {
+        e.preventDefault();
+        showUserModal();
+    });
     userDiv.append(dateEl);
     messDiv.append(messageEl);
     // Show delete-button in the message only if name and id of the author
@@ -96,5 +106,24 @@ const displayMessages = (message:Message) => {
     forumSelected.append(chatSelected);
 
 }
-export { showForum, displayMessages, travelB, sportB, gamingB, forumSelected };
+
+// Show modal for user profile.
+const showUserModal = () => {
+    userModal.style.display = "block";
+
+    // Add event listeners for closing user profile
+    closeProfileBtn.addEventListener('click', () => {
+        userModal.style.display = 'none';
+    })
+    closeUserModal.addEventListener('click', () => {
+        userModal.style.display = 'none';
+    })    
+    window.onclick = function(event:Event) {
+        if (event.target === userModal) {
+            userModal.style.display = 'none';
+        }
+    }
+}
+
+export { showForum, displayMessages, travelB, sportB, gamingB, forumSelected, showUserModal};
 
