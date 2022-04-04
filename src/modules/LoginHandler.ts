@@ -28,7 +28,8 @@ export class Loginhandler {
     const logoutBtn: HTMLDivElement = document.querySelector('#logout-btn');
     const headerData:HTMLDivElement = document.querySelector('#header-data');
     
-    console.log('login success');
+    alert(`You are logged in, welcome ${username}!`);
+
     const userItem = document.querySelector('.user');
     userItem.textContent = username;
     userItem.setAttribute('id', key);
@@ -64,9 +65,7 @@ export class Loginhandler {
 
   validator(e) {
     e.preventDefault();
-    console.log("validator invoked");
-    console.log(this.username.value);
-    console.log(this.password.value);
+    // console.log("validator invoked");
         
     // valid input
     if ((this.username.value.length >= 4) && (this.password.value.length >= 4)){
@@ -79,11 +78,11 @@ export class Loginhandler {
             return;
           }
         }
-        console.log("login failed");
+        alert("Invalid username or password");
         this.clearForm();
       }
     } else {
-      console.log('username/password length is less than 4 characters');
+      alert("Username and password must be at least 4 characters long");
       this.clearForm();
     }
   }
