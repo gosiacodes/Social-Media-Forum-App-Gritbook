@@ -44,7 +44,11 @@ export class SignupHandler {
             alert('password does not match');
             return;
         } else {
-            this.signupUser(new User(this.usernameInField.value, this.passwordInField.value));
+            this.signupUser(
+                new User(this.usernameInField.value, 
+                    this.passwordInField.value, 
+                    'profile-desc', 
+                    'profile-image'));
         }
     }
 
