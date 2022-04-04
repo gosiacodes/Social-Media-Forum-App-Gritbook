@@ -8,6 +8,8 @@ const gamingForum:HTMLDivElement = document.querySelector('#gaming');
 const travelChat:HTMLDivElement = document.querySelector('#travel-chat');
 const sportChat:HTMLDivElement = document.querySelector('#sport-chat');
 const gamingChat:HTMLDivElement = document.querySelector('#gaming-chat');
+const user:HTMLHeadingElement = document.querySelector(".user");
+const userProfileBtn = document.querySelector(".show-user-profile");
 const userModal:HTMLDivElement = document.querySelector("#user-profile-modal");
 const closeProfileBtn = document.querySelector("#profile-close-btn");
 const closeUserModal = document.querySelector("#user-close");
@@ -57,7 +59,6 @@ const showForum = (forum:string):void => {
 
 // Function for displaying messages in chat in DOM
 const displayMessages = (message:Message):void => {
-    const user:HTMLHeadingElement = document.querySelector(".user");
     const userDiv:HTMLDivElement = document.createElement('div');
     const messDiv:HTMLDivElement = document.createElement('div');
     const usernameEl:HTMLHeadingElement = document.createElement('h5');
@@ -68,6 +69,7 @@ const displayMessages = (message:Message):void => {
 
     usernameEl.innerText = message.username;
     usernameEl.className = 'mess-show-profile';
+    usernameEl.id = message.userId;
     dateEl.innerText = message.timestamp;
     messageEl.innerText = message.message;
     delButton.innerText = 'X';
@@ -80,7 +82,7 @@ const displayMessages = (message:Message):void => {
     userDiv.append(usernameEl);
     usernameEl.addEventListener('click', (e:Event) => {
         e.preventDefault();
-        showUserModal();
+        showUserModal(e);
     });
     userDiv.append(dateEl);
     messDiv.append(messageEl);
@@ -106,8 +108,25 @@ const displayMessages = (message:Message):void => {
 
 }
 
-// Show modal for user profile
-const showUserModal = ():void => {
+// Function to show modal for user profile
+const showUserModal = (e:Event):void => {
+    e.preventDefault();
+    const target = e.target as HTMLElement;
+    const usernameEl:HTMLHeadingElement = document.querySelector("#profil-username");
+    let userId:string;
+
+    if (target === userProfileBtn) {
+        userId = user.id;
+        userProfileBtn.id = user.id;
+        usernameEl.innerText = user.innerText;
+    }
+    else {
+        userId = target.id;
+        usernameEl.innerText = target.innerText;
+    }
+    console.log(userId);
+
+    // Show user profile modal
     userModal.style.display = "block";
 
     // Add event listeners for closing user profile
