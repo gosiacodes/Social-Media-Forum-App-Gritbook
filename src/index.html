@@ -26,7 +26,7 @@
       <!-- Header -->
       <div id="header-data">
         <div class="profile">
-          <i class="fa-solid fa-user-astronaut"></i>
+          <i class="show-user-profile fa-solid fa-user-astronaut"></i>
           <h2 class="user"></h2>
         </div>
         <div class="logo">
@@ -44,7 +44,7 @@
       <!-- Login form -->
       <form class="form-wrapper col" id="login-form">
         <div class="row">
-        <h3 class="account-title">Welcome back</h3>
+          <h3 class="account-title">Welcome back</h3>
         </div>
         <div class="row">
           <input type="text" placeholder="Username" id="username" required />
@@ -68,7 +68,7 @@
       <!-- Sign Up form -->
       <form class="form-wrapper col" id="signup-form" style="display: none">
         <div class="row">
-        <h3 class="account-title">Create account</h3>
+          <h3 class="account-title">Create account</h3>
         </div>
         <div class="row">
           <input
@@ -151,6 +151,67 @@
         <!-- End of topics section -->
       </section>
       <!-- End of disscussions section -->
+      <!-- User Profile Modal -->
+      <div id="user-profile-modal" class="modal-background">
+        <!-- Modal content -->
+        <div class="modal-container" id="user-container">
+          <div class="modal-header">
+            <p>User profile</p>
+            <span class="close" id="user-close" title="Close"
+                >&times;</span
+              >
+          </div>
+          <div class="container-user-modal modal-all-content">
+            <!-- User info -->
+            <div id="profil-info">
+              <h2 id="profil-username">Username</h2>
+              <img
+                id="profil-img"
+                src="img/conversation_128.png"
+                alt="user image"
+                width="96"
+                height="96"
+              />
+              <h4>Description</h4>
+              <p id="profil-description">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
+                exercitationem, rem ad vitae quam nisi quo blanditiis obcaecati
+                dolorum voluptates dolorem expedita nesciunt facilis eaque
+                soluta, explicabo amet quae? Perspiciatis.
+              </p>
+            </div>
+            <!-- End of user info -->
+              <!-- Buttons -->
+              <div class="row">
+                <button
+                  type="submit"
+                  class="buttons"
+                  id="delete-user-btn"
+                  title="Delete account"
+                >
+                  Delete
+                </button>
+                <button
+                  type="submit"
+                  class="buttons"
+                  id="update-desc-btn"
+                  title="Update"
+                >
+                  Update
+                </button>
+                <button
+                  type="submit"
+                  class="buttons"
+                  id="profile-close-btn"
+                  title="Close"
+                >
+                  Close
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of User Profile Modal -->
     </main>
     <!-- Footer -->
     <footer>
