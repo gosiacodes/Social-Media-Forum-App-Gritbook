@@ -47,14 +47,13 @@ export class SignupHandler {
             this.signupUser(
                 new User(this.usernameInField.value, 
                     this.passwordInField.value, 
-                    'profile-desc', 
-                    'profile-image'));
+                    'Add your description here', 
+                    'conversation_128.png'));
         }
     }
 
     hideUI(e) {
         e.preventDefault()
-        console.log('hideUI invoked');
         this.signUpform.style.display = "none";
         this.signInForm.style.display = "flex";
     }
@@ -64,7 +63,9 @@ export class SignupHandler {
         // Create new user-object
         const userToAdd = {
             username: user.getUsername(),
-            password: user.getPassword()
+            password: user.getPassword(),
+            desc: user.getDesc(),
+            image: user.getImage()
         }
 
         // Update database with new user
@@ -86,7 +87,6 @@ export class SignupHandler {
         const logoutBtn: HTMLDivElement = document.querySelector('#logout-btn');
         const headerData:HTMLDivElement = document.querySelector('#header-data');
         
-        console.log('login success');
         const userItem = document.querySelector('.user');
         userItem.textContent = username;
         userItem.setAttribute('id', key);
