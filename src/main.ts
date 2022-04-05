@@ -1,7 +1,7 @@
 import { Loginhandler } from "./modules/LoginHandler";
 import { SignupHandler } from "./modules/SignupHandler";
 import { showUserModal } from "./modules/displayHandler";
-import { setForum, addMessageToDatabase } from "./modules/eventListeners";
+import { setForum, addMessageToDatabase } from "./modules/eventListenersMess";
 
 // DOM elements
 const forumButtons = document.querySelectorAll(".forum-btn");

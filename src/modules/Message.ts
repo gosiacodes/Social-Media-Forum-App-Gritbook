@@ -1,5 +1,5 @@
 import { displayMessages } from "./displayHandler";
-import { editAndUpdateMessage, deleteMessageFromDatabase } from "./eventListeners";
+import { editAndUpdateMessage, deleteMessageFromDatabase } from "./eventListenersMess";
 
 // Message class with constructor
 class Message {
