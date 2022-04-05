@@ -1,26 +1,25 @@
-import { showUserModal } from "./displayHandler";
 import { db, fetchUsersData } from "./firebaseApp";
-import { onValue, ref, get } from "firebase/database";
+import { onValue, ref, get, DataSnapshot } from "firebase/database";
 import { User } from "./User";
 ((): void => {
-get(dbReftoUser).then(
-     (snapshot)=>{
-      usersData = snapshot.val();
 
-      let usernameID = sessionStorage.getItem("user.id");
-let desc = sessionStorage.getItem("desc");
-let ProfileP = sessionStorage.getItem("image");
+    get(dbReftoUser).then(
+        (snapshot) => {
+            usersData = snapshot.val();
 
-const img:HTMLInputElement = document.querySelector('#profil-img')
-console.log(img)
-img.src = ProfileP;
+            let usernameID = sessionStorage.getItem("user.id");
+            let desc = sessionStorage.getItem("desc");
+            let ProfileP = sessionStorage.getItem("image");
 
-const namn: HTMLElement = document.querySelector("#user-profile-modal");
-const bio: HTMLElement = document.querySelector("#profil-description");
+            const img: HTMLInputElement = document.querySelector('#profil-img')
+            console.log(img)
+            img.src = ProfileP;
 
-bio.innerText = ProfileP;
-namn.innerText = usernameID;
+            const namn: HTMLElement = document.querySelector("#user-profile-modal");
+            const bio: HTMLElement = document.querySelector("#profil-description");
 
-     }
-      )
+            bio.innerText = ProfileP;
+            namn.innerText = usernameID;
+        }
+    )
 })
