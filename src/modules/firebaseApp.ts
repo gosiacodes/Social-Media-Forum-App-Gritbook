@@ -78,6 +78,7 @@ const fetchMessagesData = ():void => {
 // Function to fetch users data from database
 const fetchUsersData = () => { 
   let usersData:DataSnapshot;
+  
   onValue(dbRefUsers, (snapshot) => {
   usersData = snapshot.val();
   console.log(usersData);
