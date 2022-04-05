@@ -33,7 +33,8 @@ h4,
 h5,
 .buttons,
 .copyright,
-.form-ui {
+.form-ui,
+#navbar a {
   font-family: "Inknut Antiqua", "Trebuchet MS", "Lucida Sans Unicode",
     "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
@@ -183,33 +184,67 @@ input {
 /* Forums section */
 #forums-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   display: none;
 }
 
-/* Sidebar */
-#sidebar {
-  width: 15%;
-  margin-top: 10rem;
+/* Navbar */
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  margin: 1rem;
+  border-bottom: #604200 solid 2px;
 }
 
-#sidebar a {
+#navbar a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   color: #b59136;
-  padding: 0.5rem 1rem;
   text-decoration: none;
-  font-size: 1.5rem;
-  display: block;
+  font-size: 1.1rem;
+  width: 25%;
+  border-top-right-radius: 0.5rem;
+  border-top: #b59136 solid 2px;
+  border-right: #b59136 solid 2px;
 }
 
-#sidebar a:hover {
+#navbar a:hover {
   color: #604200;
+  background-color: #ffeeca;
+  border-top: #604200 solid 2px;
+  border-right: #604200 solid 2px;
+}
+
+#navbar a.active {
+  color: #604200;
+  background-color: #ffeeca;
+}
+
+#travel-forum {
+  border-left:#b59136 solid 2px;
+  border-top-left-radius: 0.5rem;
+}
+
+#travel-forum:hover {
+  border-left:#604200 solid 2px;
+}
+
+.marg-right {
+  margin-right: 0.5rem;
 }
 
 /* Topics section */
 #topics-section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 85%;
 }
