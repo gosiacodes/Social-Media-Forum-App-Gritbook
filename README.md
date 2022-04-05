@@ -11,7 +11,12 @@ https://margareta75.github.io/FE21-JS2-Slutprojekt-Gritbook/
 
 
 ## :pushpin: _How does the application work?_
-Description comes later...
+Chat application with 3 forum topics: travel, sport and gaming connected to Firebase database.
+You can create new user account and then add messages in individual forums.
+You can also edit your message or delete it from chat and database.
+There is also possibility to see yours and other users profile (UI fixed, functionality under construction).
+When you have created new account, you can log in and out with it.
+In the future you will also be able to delete your account from database (under construction).
 
 ## :pushpin: _Work area_
 #### _Gosia:_
