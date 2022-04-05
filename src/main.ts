@@ -11,7 +11,7 @@ const userProfileBtn:HTMLButtonElement = document.querySelector(".show-user-prof
 new Loginhandler();
 new SignupHandler();
 
-// Event listener for sidebar to choose forum-topic
+// Event listener for navbar to choose forum
 forumButtons.forEach((btn) => {
     btn.addEventListener('click', setForum); 
 });
