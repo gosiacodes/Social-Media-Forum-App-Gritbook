@@ -34,8 +34,7 @@
           <img
             src="img/conversation_128.png"
             alt="Gritbook logo"
-            width="96"
-            height="96"
+            id="logo-png"
           />
         </div>
         <button type="submit" class="buttons" id="logout-btn">Logout</button>
@@ -46,11 +45,18 @@
         <div class="row">
           <h3 class="account-title">Welcome back</h3>
         </div>
-        <div class="row">
-          <input type="text" placeholder="Username" id="username" required />
+        <div class="inputs-div">
+          <input
+            type="text"
+            placeholder="Username"
+            class="input-login"
+            id="username"
+            required
+          />
           <input
             type="password"
             placeholder="Password"
+            class="input-login"
             id="password"
             required
           />
@@ -70,10 +76,11 @@
         <div class="row">
           <h3 class="account-title">Create account</h3>
         </div>
-        <div class="row">
+        <div class="inputs-div">
           <input
             type="text"
             placeholder="Username"
+            class="input-signup"
             id="new_username"
             required
           />
@@ -81,12 +88,14 @@
             type="password"
             placeholder="Password"
             id="new_password"
+            class="input-signup"
             required
           />
           <input
             type="password"
             placeholder="Repeat Password"
             id="repeat_password"
+            class="input-signup"
             required
           />
         </div>
@@ -153,9 +162,7 @@
         <div class="modal-container" id="user-container">
           <div class="modal-header">
             <p>User profile</p>
-            <span class="close" id="user-close" title="Close"
-                >&times;</span
-              >
+            <span class="close" id="user-close" title="Close">&times;</span>
           </div>
           <div class="container-user-modal modal-all-content">
             <!-- User info -->
@@ -177,25 +184,25 @@
               </p>
             </div>
             <!-- End of user info -->
-              <!-- Buttons -->
-              <div class="row">
-                <button
-                  type="submit"
-                  class="buttons"
-                  id="delete-user-btn"
-                  title="Delete account"
-                >
-                  Delete
-                </button>
-                <button
-                  type="submit"
-                  class="buttons"
-                  id="profile-close-btn"
-                  title="Close"
-                >
-                  Close
-                </button>
-              </div>
+            <!-- Buttons -->
+            <div class="row">
+              <button
+                type="submit"
+                class="buttons"
+                id="delete-user-btn"
+                title="Delete account"
+              >
+                Delete
+              </button>
+              <button
+                type="submit"
+                class="buttons"
+                id="profile-close-btn"
+                title="Close"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
