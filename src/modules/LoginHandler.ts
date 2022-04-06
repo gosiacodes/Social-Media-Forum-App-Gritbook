@@ -21,7 +21,7 @@ export class Loginhandler {
   }
 
   // On login show user data and hide login UI
-  login(username: string, key: string) {
+  login(username: string, key: string): void {
     const profileDiv: HTMLDivElement = document.querySelector('.profile');
     const forumSection: HTMLDivElement = document.querySelector('#forums-section');
     const loginForm: HTMLDivElement = document.querySelector('#login-form');
@@ -44,7 +44,7 @@ export class Loginhandler {
   }
 
   // On logout clear user data and show login UI
-  logout(e) {
+  logout(e): void {
     e.preventDefault();
     const profileDiv: HTMLDivElement = document.querySelector('.profile');
     const forumSection: HTMLDivElement = document.querySelector('#forums-section');
@@ -62,7 +62,7 @@ export class Loginhandler {
     userItem.textContent = "";
   }
 
-  validator(e) {
+  validator(e): void {
     e.preventDefault();
         
     // valid input
@@ -85,14 +85,14 @@ export class Loginhandler {
     }
   }
   
-  hideUI(e) {
+  hideUI(e): void {
     e.preventDefault();
     this.clearForm();
     this.signInForm.style.display = "none";
     this.signUpForm.style.display = "flex";
   }
 
-  clearForm() {
+  clearForm(): void {
     this.signInForm.reset();
   }
 }
