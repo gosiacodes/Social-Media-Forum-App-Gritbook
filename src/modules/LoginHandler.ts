@@ -2,19 +2,14 @@ import { showForum } from "./displayHandler";
 import { fetchUsersData } from "./firebaseApp";
 
 export class Loginhandler {
-  private signInForm: HTMLFormElement;
-  private signUpForm: HTMLFormElement;
-  private username: HTMLInputElement;
-  private password: HTMLInputElement;
 
   constructor(
+    private readonly signInForm: HTMLFormElement = document.querySelector("#login-form"),
+    private readonly signUpForm : HTMLFormElement= document.querySelector("#signup-form"),
+    private readonly username: HTMLInputElement = document.querySelector("#username"),
+    private readonly password: HTMLInputElement = document.querySelector("#password"),
   ) {
-    this.signInForm = document.querySelector("#login-form");
-    this.signUpForm = document.querySelector("#signup-form");
-    this.username = document.querySelector("#username");
-    this.password = document.querySelector("#password");
-   
-    
+
     document.querySelector("#signin-btn").addEventListener("click", this.validator.bind(this));
     document.querySelector("#btn-signup-ui").addEventListener("click", this.hideUI.bind(this)); 
     document.querySelector("#logout-btn").addEventListener("click", this.logout.bind(this)); 

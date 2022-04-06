@@ -4,33 +4,22 @@ import { push, ref, update } from "firebase/database";
 import { showForum } from "./displayHandler";
 
 export class SignupHandler {
-    private signInForm: HTMLFormElement;
-    private signUpform: HTMLFormElement;
-    private profileForm: HTMLFormElement;
-    private usernameInField: HTMLInputElement;
-    private passwordInField: HTMLInputElement;
-    private repeatPasswordInField: HTMLInputElement;
-    private profileDesc: HTMLInputElement;
 
-    constructor(){
-        this.usernameInField = document.querySelector('#new_username');
-        this.passwordInField = document.querySelector('#new_password');
-        this.repeatPasswordInField = document.querySelector('#repeat_password');
-        this.signUpform = document.querySelector("#signup-form");
-        this.signInForm = document.querySelector("#login-form");
-        this.profileForm = document.querySelector("#profile-form");
-        this.profileDesc = document.querySelector("#profil-desc");
-
+    constructor(
+        private readonly usernameInField: HTMLInputElement = document.querySelector('#new_username'),
+        private readonly passwordInField: HTMLInputElement = document.querySelector('#new_password'),
+        private readonly repeatPasswordInField: HTMLInputElement = document.querySelector('#repeat_password'),
+        private readonly signUpform: HTMLFormElement = document.querySelector("#signup-form"),
+        private readonly signInForm: HTMLFormElement = document.querySelector("#login-form"),
+        private readonly profileForm: HTMLFormElement = document.querySelector("#profile-form"),
+        private readonly profileDesc: HTMLTextAreaElement = document.querySelector("#profil-desc"),
+    ){
+        
+        // Add listeners 
         document.querySelector('#signup-btn').addEventListener('click', this.validateForm.bind(this));
         document.querySelector('#btn-display-signin').addEventListener('click', this.hideUI.bind(this));
         document.querySelector('#update-btn').addEventListener('click', this.update.bind(this));
         document.querySelector('#img-container').addEventListener('click', this.updateProfilePic.bind(this));
-
-        //init profile pic
-        const img = document.querySelector('.selected-profile-img');
-        const defaultImg = document.querySelector('#default-profile-img');
-        img.setAttribute('src', defaultImg.getAttribute('src'));
-
     }
 
     //validate form 
@@ -65,6 +54,7 @@ export class SignupHandler {
         this.signInForm.style.display = "flex";
     }
 
+    // Create user in database
     signupUser(user: User) {
         // Create new user-object
         const userToAdd = {
@@ -74,7 +64,6 @@ export class SignupHandler {
             image: user.getImage()
         }
 
-        // Update database with new user
         const dbRefUsers = ref(db, '/users');
         const key:string = push(dbRefUsers).key;
         const newUser = {};
@@ -87,6 +76,7 @@ export class SignupHandler {
         this.profileForm.style.display = "none";
     }
 
+    // Invoked when signup-form is succesfully submitted
     login(username: string, key: string) {
         const profileDiv: HTMLDivElement = document.querySelector('.profile');
         const forumSection: HTMLDivElement = document.querySelector('#forums-section');
@@ -109,7 +99,6 @@ export class SignupHandler {
 
     update(e): void {
         e.preventDefault();
-        console.log('update');
         const imageEl = document.querySelector('.selected-profile-img');
         const imgSrc = imageEl.getAttribute('src').substring(22);
           this.signupUser(
