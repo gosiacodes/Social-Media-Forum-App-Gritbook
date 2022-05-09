@@ -1,4 +1,4 @@
-import { fetchMessagesData } from "./firebaseApp";
+import { fetchMessagesData, fetchUsersData } from "./firebaseApp";
 import { Message } from "./Message";
 
 // DOM elements
@@ -12,6 +12,7 @@ const travelBtn:HTMLButtonElement = document.querySelector('#travel-forum');
 const sportBtn:HTMLButtonElement = document.querySelector('#sport-forum');
 const gamingBtn:HTMLButtonElement = document.querySelector('#gaming-forum');
 const user:HTMLHeadingElement = document.querySelector(".user");
+const desc:HTMLHeadingElement = document.querySelector("#profil-description");
 const userProfileBtn = document.querySelector(".show-user-profile");
 const userModal:HTMLDivElement = document.querySelector("#user-profile-modal");
 const closeProfileBtn = document.querySelector("#profile-close-btn");
@@ -123,20 +124,29 @@ const displayMessages = (message:Message):void => {
 // Function to show modal for user profile
 const showUserModal = (e:Event):void => {
     e.preventDefault();
+    const userinfo = fetchUsersData();
     const target = e.target as HTMLElement;
     const usernameEl:HTMLHeadingElement = document.querySelector("#profil-username");
+    const descEl:HTMLHeadingElement = document.querySelector("#profil-description");
     let userId:string;
+    let descid:string;
 
     if (target === userProfileBtn) {
         userId = user.id;
+        descid = desc.id;
         userProfileBtn.id = user.id;
+        userProfileBtn.id = desc.id
+        descEl.innerText = user.innerText;
         usernameEl.innerText = user.innerText;
     }
     else {
         userId = target.id;
+        descid = target.id
         usernameEl.innerText = target.innerText;
+        descEl.innerText = target.innerText;
     }
     console.log(userId);
+    console.log(descEl);
 
     // Show user profile modal
     userModal.style.display = "block";
