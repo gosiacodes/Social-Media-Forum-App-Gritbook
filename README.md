@@ -2,7 +2,7 @@
 
 Social Media App with TypeScript and Firebase - group project at JavaScript2 course (2022)  
 
-https://margareta75.github.io/Social-Media-Forum-App-Gritbook/
+https://gosiacodes.github.io/Social-Media-Forum-App-Gritbook/
 
 ## :pushpin: _Contributors_
 - [@Gosia](https://github.com/margareta75)
