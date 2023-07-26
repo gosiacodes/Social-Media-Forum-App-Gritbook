@@ -1,4 +1,4 @@
-# :sparkles: Gritbook app :sparkles:
+# :sparkles: Gritbook * Social Media Forum App * TypeScript Firebase :sparkles:
 
 Social Media App with TypeScript and Firebase - group project at JavaScript2 course (2022)  
 
